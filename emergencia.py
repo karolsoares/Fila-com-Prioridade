@@ -34,36 +34,68 @@ IMPORTANTE:
 
 '''
 from maxheap import MaxHeap
+import pickle
 
 fila = MaxHeap()
 
 class Paciente:
 
-    def dados_paciente(nome,tipoSanguineo, nascimento):
-        numero= [999]   # como naõ sobreescrever valores
+    def ordem():
+        ordem = [999] # criaria a ordem
+        ordem= ordem[0] - 1 # e faria esse valor sempre ir diminuindo
+        ordem.append(ordem) # iria adicionando na lista o valor dos numeors da ordem conorme fosse decrescendo 
+
+        return ordem
+
+    ''' 
+    def interação():
+        print("Digite seu nome:")
+        nome= input()
+        print("Digite seu tipo sanguineo:")
+        tipo_sanguineo= input()
+        print("Digite sua data de nascimento:")
+        dt_nascimento= input()
+
+        return 
+        '''
+
+    def adicionar_dados(nome, tipo_sanguineo, dt_nascimento):
+        lista=[]
+        arquivo= open('dados', 'w')
+        if len(lista) == 0:
+            lista.append((nome, tipo_sanguineo, dt_nascimento)) 
+
+            indice = len((lista)) + 1 #teoricamnete seria um contador
+            
+            
+            print(indice) #so pra ver se tava contando certo
+            
+            return lista 
+        elif len(lista) == 1:
+            lista.append((nome, tipo_sanguineo, dt_nascimento))
+
+            indice = indice + 1
         
-        numero[0] - 1
-        numero.append(numero)
+            return lista
 
-        dicPaciente= {
-            "nome": (nome, str(numero)),
-            "tipoSanguineo": tipoSanguineo,
-            "nascimento": nascimento      
-        } 
+        arquivo.close()
+     
+p = Paciente
+while True:   
+    print("Digite seu nome:")
+    nome= input()
+    print("Digite seu tipo sanguineo:")
+    tipo_sanguineo= input()
+    print("Digite sua data de nascimento:")
+    dt_nascimento= input()
 
-       
+    print(p.adicionar_dados(nome, tipo_sanguineo, dt_nascimento))
 
-        lista= []
-        len(lista) + 1
-        lista.append(dicPaciente["nome"])
 
-        print(lista)
-        return dicPaciente
 
-        
-        
-    print(dados_paciente("Gabriela", "AB", "17/11/2001" ))
-    print(dados_paciente("Joao", "AB", "19/11/2001" ))
+
+
+
 
 
 
