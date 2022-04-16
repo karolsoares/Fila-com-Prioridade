@@ -33,63 +33,42 @@ IMPORTANTE:
 4)	Listar os 5 últimos chamados
 
 '''
-from maxheap import MaxHeap
 import pickle
+from maxheap import MaxHeap
 
 fila = MaxHeap()
 
 class Paciente:
-
+    
     def ordem():
         ordem = [999] # criaria a ordem
         ordem= ordem[0] - 1 # e faria esse valor sempre ir diminuindo
         ordem.append(ordem) # iria adicionando na lista o valor dos numeors da ordem conorme fosse decrescendo 
 
         return ordem
-
-    ''' 
+    
     def interação():
-        print("Digite seu nome:")
-        nome= input()
-        print("Digite seu tipo sanguineo:")
-        tipo_sanguineo= input()
-        print("Digite sua data de nascimento:")
-        dt_nascimento= input()
+        while True:
+            nome= input("Digite seu nome:")
+            tipo_sanguineo= input("Digite seu tipo sanguineo:")
+            dt_nascimento= input("Digite sua data de nascimento:")
 
-        return 
-        '''
+            adicionar= (nome, tipo_sanguineo, dt_nascimento) 
 
-    def adicionar_dados(nome, tipo_sanguineo, dt_nascimento):
-        lista=[]
-        arquivo= open('dados', 'w')
-        if len(lista) == 0:
-            lista.append((nome, tipo_sanguineo, dt_nascimento)) 
-
-            indice = len((lista)) + 1 #teoricamnete seria um contador
+            Paciente.adicionar_dados(adicionar)
+    
+    def adicionar_dados(item):
+        lista = [0]
+        for lista in range(1, 1000): #não sei ageitar isso
+            lista.append(item) 
             
-            
-            print(indice) #so pra ver se tava contando certo
-            
-            return lista 
-        elif len(lista) == 1:
-            lista.append((nome, tipo_sanguineo, dt_nascimento))
+        print(lista) 
+ 
+p = Paciente 
 
-            indice = indice + 1
-        
-            return lista
+p.interação()
 
-        arquivo.close()
-     
-p = Paciente
-while True:   
-    print("Digite seu nome:")
-    nome= input()
-    print("Digite seu tipo sanguineo:")
-    tipo_sanguineo= input()
-    print("Digite sua data de nascimento:")
-    dt_nascimento= input()
-
-    print(p.adicionar_dados(nome, tipo_sanguineo, dt_nascimento))
+    
 
 
 
