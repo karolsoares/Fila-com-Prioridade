@@ -46,8 +46,7 @@ class MaxHeap:
             self.__swap(index, maior)
             self.__bubbleDown(maior)
 
-'''
-## TESTE ##
+##TESTE ##
 h = MaxHeap()
 h.put(45)
 h.put(55)
@@ -57,4 +56,3 @@ print(h.get())
 print(h.get())
 print(h.get())
 
-'''
