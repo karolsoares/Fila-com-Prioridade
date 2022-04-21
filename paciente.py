@@ -5,7 +5,7 @@ class Paciente:
         Paciente.pacientes.insert(0, item) #sempre vai ser colocado na mesma posiçao
         print(Paciente.pacientes)
 
-    def interacao(nome, dt_nasciento, tipo_sanguineo): #def que cria a tupla
+    def uniao(nome, dt_nasciento, tipo_sanguineo): #def que cria a tupla
         item= (nome, dt_nasciento, tipo_sanguineo)
 
         Paciente.put(item)
