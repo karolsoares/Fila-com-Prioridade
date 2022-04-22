@@ -1,13 +1,15 @@
-from ctypes.wintypes import PULARGE_INTEGER
+#Aluna: Karoline Zantedeschi Soares
+
 from maxheap import MaxHeap
 from paciente import Paciente
 
 h = MaxHeap()
 p = Paciente
 
-lista = []
-ordem = []
-f = []
+lista = [] # lista dos pacientes adicionados
+ordem = [] # lista dos pacientes em caso graves
+f = [] # lista dos pacientes com casos leves  
+lista_auxiliar = [] # lista para itens excluidos (pacientes ja chamados)
 
 def interacao():
     print( "----- Bem-Vindo a Emergência do Hospital -----\n")
@@ -22,7 +24,7 @@ def interacao():
     ### PRIORIDADE
     prioridade()
     pula_linha()
-    iniciar_chamada()
+    menu()
 
 def prioridade():        
         while True:
@@ -71,7 +73,7 @@ def insercao(a, b, c): #insere na kista de chamada
     h.put(inserir) 
     print(lista)
 
-def lista_de_chamada(c): 
+def lista_de_chamada(c): #adicona na lista 1  
     if c == 1:
         urgencia()
         insercao(c, f[0], p.pacientes[0])
@@ -82,24 +84,49 @@ def lista_de_chamada(c):
 def pula_linha():
     print("\n")
 
-def iniciar_chamada():
-    print("Chamar próximo da chamada:")
-    print("Se a opcao for não, voltara para o menu inicial")
-
-    resposta = input("Sim(1)\nNão(2)\n")
+def menu(): 
+    print("1) Adicionar novo paciente")
+    print("2) Chamar próximo paciente")
+    print("3) Mostrar próximo paciente (sem chamar)")
+    print("4) Listar os 5 últimos chamados")
+    resposta = input("Insira a opção:")
+    pula_linha()
     if resposta == "1":
-        chamada()
-    elif resposta == "2":
         interacao()
+    elif resposta == "2":
+        chamada()
+        menu()
+    #elif resposta == "3":
+     #   mostrar_sem_chamar()
+      #  menu()
+    elif resposta == "4":
+        print(lista_auxiliar)
+        menu()
     else: 
         print("Esta opção não está disponível")
-        iniciar_chamada()
+        menu()
 
-def chamada(): 
-        print(h.get()) # chama o pessoal da lista
+def chamada(): # para chamar o proximo na chamada 
+    try:
+        item = h.get()
+        print(item)
+        pacientes_chamados(item)
+        pacientes_removidos(item)
         pula_linha()
-        iniciar_chamada() # para caso queira chamar o proximo da lista
+    except:
+        print("Lista acabou")
+        pula_linha()
+        menu()
+    return item 
+    
+def pacientes_chamados(i): #lista dos pacientes que ja foram chamados
+    lista_auxiliar.append(i) 
 
+def pacientes_removidos(r):
+    lista.remove(r)
+
+#def mostrar_sem_chamar(): 
+        
 ### TESTE ###
 while True:
     interacao()
